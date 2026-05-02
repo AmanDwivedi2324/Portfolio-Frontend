@@ -32,20 +32,20 @@ const PortfolioLayout = () => {
     fetchData();
   }, []);
 
-  if(loading) return (
-    <div className="h-screen flex items-center justify-center bg-dark-bg text-white">
-      <div className="flex flex-col items-center gap-6">
-        <div className="w-12 h-12 border-4 border-white/10 border-t-primary animate-spin"></div>
-        <div className="text-sm font-bold tracking-widest text-primary uppercase animate-pulse">Initializing System...</div>
-      </div>
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-black text-white selection:bg-primary/30 selection:text-white overflow-x-hidden w-full relative">
       <Navbar />
       <main>
-        <Outlet context={data} />
+        {loading && (
+          <div className="flex flex-col items-center justify-center py-20">
+            <div className="w-12 h-12 border-4 border-white/10 border-t-primary animate-spin rounded-full mb-6"></div>
+            <div className="text-sm font-bold tracking-widest text-primary uppercase animate-pulse">Waking Server...</div>
+            <p className="text-xs text-gray-500 max-w-xs text-center mt-2">Free hosting services take ~40 seconds to start on first load. Thanks for your patience!</p>
+          </div>
+        )}
+        <div className={loading ? "opacity-30 pointer-events-none" : ""}>
+          <Outlet context={data} />
+        </div>
       </main>
       <Footer />
     </div>
