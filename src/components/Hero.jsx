@@ -9,7 +9,7 @@ const Hero = ({ profile }) => {
 
   return (
     <section className="min-h-screen flex flex-col justify-center px-6 max-w-7xl mx-auto pt-20 relative">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-primary/20 blur-[120px] pointer-events-none"></div>
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -66,8 +66,10 @@ const Hero = ({ profile }) => {
           Explore Work
         </Link>
         <a 
-          href={profile?.resumeUrl ? profile.resumeUrl.replace("/upload/", "/upload/fl_attachment/") : "/Aman_Dwivedi_Resume.pdf"} 
+          href={profile?.resumeUrl || "/Aman_Dwivedi_Resume.pdf"} 
           download="Aman_Dwivedi_Resume.pdf" 
+          target="_blank"
+          rel="noopener noreferrer"
           className="glass-panel text-white px-8 py-4 font-bold border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all text-center w-full sm:w-auto"
         >
           Download Resume

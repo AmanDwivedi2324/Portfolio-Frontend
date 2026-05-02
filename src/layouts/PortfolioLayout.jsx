@@ -42,7 +42,7 @@ const PortfolioLayout = () => {
   );
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-primary/30 selection:text-white">
+    <div className="min-h-screen bg-black text-white selection:bg-primary/30 selection:text-white overflow-x-hidden w-full relative">
       <Navbar />
       <main>
         <Outlet context={data} />
